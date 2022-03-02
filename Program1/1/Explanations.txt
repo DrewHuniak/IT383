@@ -1,0 +1,11 @@
+fork() - Fork is a system call that is used for creating new processes. These new processes are referred to as child processes. 
+The child processes run at the same time as the process that calls it, the parent process. When the child is created it uses the same program counter and CPU registers as the parent.
+The fork call will assign the child's pid to 0 and the parents to the original pid.
+
+
+execlp() - This function replaces the current process with a new process image. If successful execlp() does not have a return value. If it is not sucessful the function will return -1.
+This system call is able to overlay a new process image over the original process. It uses a path to identify the location of the new process image. 
+
+
+wait() - The wait system call will block the current calling process until its child process(es) exit. Once the child exits or a certain signal is received, the parent process will then be able to continue in execution. 
+If NULL is used as an argument for wait it will wait until the child process is finished executing. If a integer is used as an argument it will store the exit status of the child process.

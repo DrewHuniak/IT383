@@ -1,0 +1,2 @@
+getpid() - The getpid() API function is used to get the process ID of which ever process uses the function. A unique id is given to each process. 
+fprintf() - The API function is used for formatted file input and output. It acts in a similar way to printf(), but writes formatted data to a file instead of the console. It also takes a filepointer as an argument. The function will return the number of characters written to the file if it is successful.

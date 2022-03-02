@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+int main(int argv, char** argc)
+{
+    if(argv != 4)
+    {
+        printf("Usage ./my_copy file1 file2 source_file\n");
+        return 1;
+    }
+
+    FILE *file1 = fopen(argc[1], "w");
+    FILE *file2 = fopen(argc[2], "w");
+    FILE *file3 = fopen(argc[3], "r");
+
+    if(file1 == NULL || file2 == NULL || file3 == NULL)
+    {
+        printf("Error opening a file\n");
+        return 1;
+    }
+
+    char buffer[512];
+    int size_r;
+    int size_w;
+    in

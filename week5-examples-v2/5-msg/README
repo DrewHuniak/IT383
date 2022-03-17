@@ -1,0 +1,9 @@
+
+Use "two terminal windows"
+1. [window#1] ./server
+2. [window#2] ./ipcs
+   check what you can see under message queue
+
+3. [window#2] ./client
+   check what you can see under message queue
+

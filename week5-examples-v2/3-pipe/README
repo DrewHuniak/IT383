@@ -1,0 +1,13 @@
+run the following programs in order:
+
+0. ./fdtest
+
+1. ./pipemini
+
+2. ./pipetest
+
+
+kwsuh@walnut ~/it383_spring2016/week6-examples/3-pipe: ls --time-style=full-iso -l fdtest*
+-rwx------ 1 kwsuh users 10017 2016-02-15 10:16:35.000000000 -0600 fdtest
+-rwx------ 1 kwsuh users   342 2016-02-15 10:16:35.000000000 -0600 fdtest.c
+

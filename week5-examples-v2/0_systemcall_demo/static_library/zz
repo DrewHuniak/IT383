@@ -1,0 +1,18 @@
+/usr/include/valgrind/vki/vki-scnums-x86-linux.h:#define __NR_getpid		 20
+/usr/include/valgrind/vki/vki-scnums-arm64-linux.h:#define __NR_getpid 172
+/usr/include/valgrind/vki/vki-scnums-amd64-linux.h:#define __NR_getpid                             39
+/usr/include/valgrind/vki/vki-scnums-arm-linux.h:#define __NR_getpid			 20
+/usr/include/valgrind/vki/vki-scnums-darwin.h:#define	__NR_getpid         VG_DARWIN_SYSCALL_CONSTRUCT_UNIX(20)
+/usr/include/valgrind/vki/vki-scnums-s390x-linux.h:#define __NR_getpid              20
+/usr/include/valgrind/vki/vki-scnums-solaris.h:#define __NR_getpid                     SYS_getpid
+/usr/include/valgrind/vki/vki-scnums-mips64-linux.h:#define __NR_getpid                 (__NR_Linux +  38)
+/usr/include/valgrind/vki/vki-scnums-ppc64-linux.h:#define __NR_getpid              20
+/usr/include/valgrind/vki/vki-scnums-ppc32-linux.h:#define __NR_getpid		 20
+/usr/include/valgrind/vki/vki-scnums-mips32-linux.h:#define __NR_getpid                     (__NR_Linux +  20)
+/usr/include/x86_64-linux-gnu/asm/unistd_x32.h:#define __NR_getpid (__X32_SYSCALL_BIT + 39)
+/usr/include/x86_64-linux-gnu/asm/unistd_64.h:#define __NR_getpid 39
+/usr/include/x86_64-linux-gnu/asm/unistd_32.h:#define __NR_getpid 20
+/usr/include/x86_64-linux-gnu/bits/syscall.h:#ifdef __NR_getpid
+/usr/include/x86_64-linux-gnu/bits/syscall.h:# define SYS_getpid __NR_getpid
+/usr/include/asm-generic/unistd.h:#define __NR_getpid 172
+/usr/include/asm-generic/unistd.h:__SYSCALL(__NR_getpid, sys_getpid)

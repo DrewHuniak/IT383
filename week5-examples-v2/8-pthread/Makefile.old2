@@ -1,0 +1,5 @@
+all: pthreadtest 
+
+pthreadtest: pthreadtest.c
+	gcc -o pthreadtest pthreadtest.c -pthread
+

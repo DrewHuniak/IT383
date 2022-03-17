@@ -3,10 +3,6 @@
 int main()
 {
     const int SIZE = 53477376;
-  
-    struct filesharing_struct *fs = (struct filesharing_struct*) malloc(sizeof(struct filesharing_struct));
-    fs->flag = 'f';
-    fs->size = 0;
 
     //Created Shared Memory Object
     int shm_fd = shm_open(NAME, O_CREAT | O_RDWR, 0666);
@@ -26,17 +22,18 @@ int main()
         fprintf(stderr, "mmap() failed\n");
         return -1;
     }
-
+    ptr->flag = 'f';
+    ptr->size = 0;
 
     //Take in User input
     printf("Please type in the name of the file you want shared.\n");
-    scanf("%s", fs->name);
+    scanf("%s", ptr->name);
 
     //Open User's file
-    FILE *file = fopen(fs->name, "rb");
+    FILE *file = fopen(ptr->name, "rb");
     if(file == NULL)
     {
-        printf("%s could not be opened\n", fs->name);
+        printf("%s could not be opened\n", ptr->name);
         return -1;
     }
 
@@ -46,21 +43,15 @@ int main()
     size_t count = 0;
     while((size_r = fread(buffer, sizeof(char), 1024, file)) > 0)
     {
-        memcpy(fs->content + count, buffer, size_r);
-        count += size_r;   
+        memcpy(ptr->content + count, buffer, size_r);
+        count += size_r; 
     }
-    fs->flag = 't';
-
-    //Place content into memory map
-    memcpy(ptr->content, fs->content, sizeof(fs->content));
-    ptr->flag = fs->flag;
-    memcpy(ptr->name, fs->name, sizeof(fs->name));
+    ptr->flag = 't';
 
     //Find file size
     fseek(file, 0, SEEK_END);
-    fs->size = (int)ftell(file);
+    ptr->size = (int)ftell(file);
     fseek(file,0,SEEK_SET);
-    ptr->size = fs->size;
     
     fclose(file);
 

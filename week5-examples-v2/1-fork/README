@@ -1,0 +1,6 @@
+run the following programs in order
+
+1. ./forktest
+2. ./forktest2
+3. ./forktest3
+4. ./forktest4 hello

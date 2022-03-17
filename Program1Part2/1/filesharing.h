@@ -4,7 +4,6 @@
 #include <fcntl.h>
 #include <sys/mman.h>
 #include <sys/shm.h>
-#include <sys/stat.h>
 #include <unistd.h>
 
 const char *NAME = "17491262_filesharing";

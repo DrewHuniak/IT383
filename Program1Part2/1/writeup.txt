@@ -1,0 +1,16 @@
+shm_fileuploader.c
+This program uses a shm_open to create a new shared memory object to store a struct that is created inside filesharing.h. Once shm_open has been called and 
+a shared memory object is created, ftruncate is called to set the size of the object to 51MB. Once this is done I created a filesharing
+struct pointer to to mmap of my shared memory object. The program then takes in a file from the user and reads it in in chunks of 1024 bytes at a time. 
+As it is reading in the data it is saving it to the pointer of my filesharing struct. I used memcpy for all transfers between buffers to ensure the data can work with binary files as well. 
+
+shm_filedownloader.c
+This program uses shm_open under the same name defined in the filesharing.h header file and prints the data to a file called copy. If no data is found 
+in the shared memory object it will display that it did not find files within the shared memory object and quit. As this program writes to a file I 
+have it save how much data it has written and start from that point of the buffer each time fwrite is called. It also will only write at 1024 maximum 
+bytes at a time. Once the file is finished it calls shm_unlink to remove the shared memory object.
+
+Filesharing.h
+This is a header file I created to store the filesharing_struct under. It also contains a constant for the name of the filesharing object 
+which was defined as my (Unix id)_ filesharing. Within my struct I defined a flag to represent if a file was uploaded, the size of the file, 
+the name of the file, and the content that is stored inside the file. 

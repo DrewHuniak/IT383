@@ -1,0 +1,4 @@
+./	   mmap_test*	  .mmap_test.c.swp  shm_consumer.c*  tmp/
+../	   mmap_test2*	  my_output.txt     shm_producer*    zzzz
+a.out*	   mmap_test2.c*  README*	    shm_producer.c*
+Makefile*  mmap_test.c*   shm_consumer*     structure/

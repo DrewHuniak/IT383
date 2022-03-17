@@ -1,0 +1,17 @@
+
+Before you run,
+change "11111" to your unique 5-digit port number.
+The following is the suggested number:
+  5+"last 4 digits of your ULID"
+For example, if your ULID is XX5432, use
+  "55432" as your port number.
+
+Compile java code by executing
+   javac *.java
+
+
+run your program
+
+and then run webbrowser
+
+

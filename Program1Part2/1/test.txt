@@ -1,5 +1,0 @@
-shm_open() - This API is used to create a new POSIX shared memory object. This object can then be used by processes that are unrelated.
-The value returned by this function is a file descriptor that is used as an argument for the mmap function call. If the return value is less than 0 this means that it failed to open/create the file.
-ftruncate() - A function used to set the size of a memory object. It takes the filed descriptor created by shm_open() and a set size to set the size of the memory object. ftruncate() returns 0 if the action was performed successfully and -1 is returned if an error occured.
-mmap() - This function is used to write to a memory object once its created. This function will return a pointer to the shared memory object, from there you can use the pointer to write to the object.
-shm_unlink() - This function is used to remove the name of the currently opened shared memory object. In the event that there are no other links connected to that shared memory object, the object is then deleted. I

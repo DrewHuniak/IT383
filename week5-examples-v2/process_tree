@@ -1,0 +1,37 @@
+ PPID   PID  PGID   SID TTY      TPGID STAT   UID   TIME COMMAND
+16055 16093  1038  1038 ?           -1 Sl   17189989   0:00 /usr/sbin/xrdp-chansrv
+16055 16069  1038  1038 ?           -1 Sl   17189989   0:01 /usr/lib/xorg/Xorg :37 -auth .Xauthority -config xrdp/xorg.conf -noreset -nolisten tcp -logfile .xorgxrdp.%s.log
+16055 16068  1038  1038 ?           -1 S    17189989   0:00 /bin/sh /etc/xdg/xfce4/xinitrc -- /etc/X11/xinit/xserverrc
+16068 16520  1038  1038 ?           -1 Sl   17189989   0:00  \_ xfce4-session
+16520 16585  1038  1038 ?           -1 S    17189989   0:00      \_ xscreensaver -no-splash
+16520 16588  1038  1038 ?           -1 Sl   17189989   0:00      \_ /usr/bin/python3 /usr/share/system-config-printer/applet.py
+16520 16594  1038  1038 ?           -1 Sl   17189989   0:00      \_ update-notifier
+16520 16596  1038  1038 ?           -1 Sl   17189989   0:00      \_ nm-applet
+    1 16876  1038  1038 ?           -1 Sl   17189989   0:00 xfce4-terminal
+16876 16880 16880 16880 pts/22   17382 Ss   17189989   0:00  \_ bash
+16880 17382 17382 16880 pts/22   17382 R+   17189989   0:00      \_ ps axjf
+    1 16854 16499 16499 ?           -1 Sl   17189989   0:00 /usr/lib/gvfs/gvfsd-metadata
+    1 16841 16499 16499 ?           -1 Sl   17189989   0:00 /usr/lib/gvfs/gvfs-mtp-volume-monitor
+    1 16834 16499 16499 ?           -1 Sl   17189989   0:00 /usr/lib/gvfs/gvfs-afc-volume-monitor
+    1 16827 16499 16499 ?           -1 Sl   17189989   0:00 /usr/lib/gnome-online-accounts/goa-identity-service
+    1 16820 16499 16499 ?           -1 Sl   17189989   0:00 /usr/lib/gnome-online-accounts/goa-daemon
+    1 16816 16499 16499 ?           -1 Sl   17189989   0:00 /usr/lib/gvfs/gvfs-goa-volume-monitor
+    1 16809 16499 16499 ?           -1 Sl   17189989   0:00 /usr/lib/gvfs/gvfs-gphoto2-volume-monitor
+    1 16798 16499 16499 ?           -1 Sl   17189989   0:00 /usr/lib/gvfs/gvfs-udisks2-volume-monitor
+    1 16715 16499 16499 ?           -1 Sl   17189989   0:00 /usr/lib/at-spi2-core/at-spi2-registryd --use-gnome-session
+    1 16685 16499 16499 ?           -1 SNl  17189989   0:00 /usr/lib/x86_64-linux-gnu/tumbler-1/tumblerd
+    1 16660 16499 16499 ?           -1 Sl   17189989   0:00 /usr/lib/gvfs/gvfsd-fuse /run/user/17189989/gvfs -f -o big_writes
+    1 16651 16499 16499 ?           -1 Sl   17189989   0:00 /usr/lib/gvfs/gvfsd
+16651 16848 16499 16499 ?           -1 Sl   17189989   0:00  \_ /usr/lib/gvfs/gvfsd-trash --spawner :1.10 /org/gtk/gvfs/exec_spaw/0
+    1 16649 16499 16499 ?           -1 Sl   17189989   0:00 /usr/lib/at-spi2-core/at-spi-bus-launcher
+16649 16666 16499 16499 ?           -1 S    17189989   0:00  \_ /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessibility.conf --nofork --print-address 3
+    1 16613 16612 16612 ?           -1 Sl   17189989   0:00 /usr/bin/pulseaudio --start --log-target=syslog
+    1 16581 16581 16581 ?           -1 Ssl  17189989   0:00 xfsettingsd
+    1 16580  1038  1038 ?           -1 Sl   17189989   0:00 xfdesktop
+    1 16576  1038  1038 ?           -1 Sl   17189989   0:00 xfce4-panel
+16576 16804  1038  1038 ?           -1 S    17189989   0:00  \_ /usr/lib/x86_64-linux-gnu/xfce4/panel/wrapper-1.0 /usr/lib/x86_64-linux-gnu/xfce4/panel/plugins/libsystray.so 6 8388657 systray Notification Area Area where notification icons appear
+16576 16805  1038  1038 ?           -1 S    17189989   0:00  \_ /usr/lib/x86_64-linux-gnu/xfce4/panel/wrapper-1.0 /usr/lib/x86_64-linux-gnu/xfce4/panel/plugins/libactions.so 2 8388658 actions Action Buttons Log out, lock or other system actions
+    1 16572  1038  1038 ?           -1 S    17189989   0:00 xfwm4
+    1 16532 16499 16499 ?           -1 S    17189989   0:00 /usr/lib/x86_64-linux-gnu/xfce4/xfconf/xfconfd
+    1 16499 16499 16499 ?           -1 Ss   17189989   0:00 /usr/bin/dbus-daemon --syslog --fork --print-pid 6 --print-address 8 --session
+    1 16056 16056 16056 ?           -1 SNs  17189989   0:00 /lib/systemd/systemd --user

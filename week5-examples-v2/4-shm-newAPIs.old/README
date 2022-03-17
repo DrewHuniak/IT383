@@ -1,0 +1,10 @@
+0. ./mmap_test
+
+1. ./shm_producer
+
+2. check /dev/shm directory by running
+    ls -l /dev/shm
+
+   Can you see a new file representing your shared memory segment under the directory?
+
+3. ./shm_consumer

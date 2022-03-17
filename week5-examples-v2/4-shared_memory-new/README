@@ -1,0 +1,16 @@
+0. ./mmap_test
+
+   ./mmap_test2_incorrect
+
+   ./mmap_test2
+  
+   ./mmap_filecopy /etc/hosts ./hosts
+
+1. ./shm_producer
+
+2. check /dev/shm directory by running
+    ls -l /dev/shm
+
+   Can you see a new file representing your shared memory segment under the directory?
+
+3. ./shm_consumer

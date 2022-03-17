@@ -1,0 +1,19 @@
+
+Before you run,
+change "8989" to your unique 5-digit port number.
+The following is the suggested number:
+  5+"last 4 digits of your ULID"
+For example, if your ULID is XX5432, use
+  "55432" as your port number.
+
+Compile both server and client code by running
+   javac *.java
+
+[two terminal windows are needed]
+1. [window#1] java ./TCPServer
+2. [window#2] java ./TCPClient
+   type in any message and then press [enter] key
+
+   check what happens
+
+

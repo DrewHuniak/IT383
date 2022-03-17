@@ -25,7 +25,7 @@ int main()
     }
     
     //Create new file for the download
-    FILE* file = fopen("copiedfiled.txt", "wb");
+    FILE* file = fopen("copy", "wb");
 
     //Write to file 1024 bytes at a time.
     int count = 0;

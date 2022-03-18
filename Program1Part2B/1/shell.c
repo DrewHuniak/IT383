@@ -7,12 +7,13 @@
 #include <signal.h>
 #include <fcntl.h>
 
-// add foreground feature
 
 void clean_up_child_process(int signal_number)
 {
     int status;
-    waitpid(-1, &status, WNOHANG);
+    waitpid(-1, NULL, WNOHANG);
+
+  
 }
 
 int createNewProcess(char* args[4], int argCount, int bg_flag, int rd_flag)
@@ -77,10 +78,11 @@ void fileOutput(char* file)
     close(fd);
 }
 
-void sendToForeground(int pid)
+int sendToForeground(int pid)
 {
-    tcsetpgrp(STDIN_FILENO, pid);
-    tcsetpgrp(STDOUT_FILENO, pid);
+    int status;
+    waitpid(pid, &status, 0);
+    return status;
 }
 
 int parse(char* args[4],char buffer[100])
@@ -102,8 +104,9 @@ int main()
     int argCount = 1;
     int bg_flag;
     int bg_process;
+    
     int rd_flag;
-    int stdout;
+    int fd_stdout;
 
     while(strcmp(arguments[argCount-1],"exit") != 0)
     {
@@ -117,11 +120,11 @@ int main()
 
             bg_flag = *arguments[0] == '&' ? 1 : 0;//Determine if this is a background process
 
-            if(strcmp(arguments[1], "<*") == 0) //If rediection is happening
+            if(strcmp(arguments[1], "<*") == 0) //If redirection is happening
             {
                 if(argCount >= 3)
                 {
-                    stdout = dup(STDOUT_FILENO);
+                    fd_stdout = dup(STDOUT_FILENO); //Create copy for later so return is possible later
                     fileOutput(arguments[0]);
                     rd_flag = 1;
                 }
@@ -129,8 +132,8 @@ int main()
 
             if(strcmp(arguments[argCount-1],"fg") == 0) //foreground command 
             {
-                printf("%d\n", bg_process);
-                sendToForeground(bg_process);     
+               // argCount == 2 ? sendToForeground(atoi(arguments[0])) : sendToForeground(bg_process);     
+                sendToForeground(bg_process);
             }
             else if(strcmp(arguments[argCount-1],"exit") != 0) //Dont create a new process is exiting
             {
@@ -138,12 +141,13 @@ int main()
                 if(bg_flag)
                 {
                     bg_process = pid;
+                    
                 }
             }
 
             if(rd_flag)//set output back
             {
-                dup2(stdout, STDOUT_FILENO);
+                dup2(fd_stdout, STDOUT_FILENO);
             }
         }
     }

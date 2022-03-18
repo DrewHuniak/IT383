@@ -7,13 +7,11 @@
 #include <signal.h>
 #include <fcntl.h>
 
-
+//Signal Handler for zombie processes
 void clean_up_child_process(int signal_number)
 {
     int status;
     waitpid(-1, NULL, WNOHANG);
-
-  
 }
 
 int createNewProcess(char* args[4], int argCount, int bg_flag, int rd_flag)
@@ -31,7 +29,7 @@ int createNewProcess(char* args[4], int argCount, int bg_flag, int rd_flag)
         {
             val--;
         }
-        if(rd_flag)
+        if(rd_flag) //If redirection process dont include the output file and <* char
         {
             val -= 2;
         }
@@ -81,7 +79,7 @@ void fileOutput(char* file)
 int sendToForeground(int pid)
 {
     int status;
-    waitpid(pid, &status, 0);
+    wait(NULL);
     return status;
 }
 
@@ -100,13 +98,12 @@ int parse(char* args[4],char buffer[100])
 int main()
 {
     char* arguments[4];
-    char buffer[100];
-    int argCount = 1;
-    int bg_flag;
-    int bg_process;
-    
-    int rd_flag;
-    int fd_stdout;
+    char buffer[100]; 
+    int argCount = 1; //Tracks how many arguments were received
+    int bg_flag; //Background flag
+    int bg_process; // Stores the most recent background process
+    int rd_flag; //Redirection flag
+    int fd_stdout; //Stores the fd of stdout
 
     while(strcmp(arguments[argCount-1],"exit") != 0)
     {
@@ -116,43 +113,43 @@ int main()
         if(buffer[0] != '\n') //Dont allow empty strings to be accepted
         {
             rd_flag = 0;
-            argCount = parse(arguments, buffer);
+            argCount = parse(arguments, buffer); //Parse Arguments
 
-            bg_flag = *arguments[0] == '&' ? 1 : 0;//Determine if this is a background process
-
-            if(strcmp(arguments[1], "<*") == 0) //If redirection is happening
+            if(argCount) //Arguments exist
             {
-                if(argCount >= 3)
+                bg_flag = *arguments[0] == '&' ? 1 : 0;//Determine if this is a background process
+
+                if(strcmp(arguments[1], "<*") == 0) //If redirection is happening
                 {
-                    fd_stdout = dup(STDOUT_FILENO); //Create copy for later so return is possible later
-                    fileOutput(arguments[0]);
-                    rd_flag = 1;
+                    if(argCount >= 3)
+                    {
+                        fd_stdout = dup(STDOUT_FILENO); //Create copy for later so return is possible later
+                        fileOutput(arguments[0]);
+                        rd_flag = 1;
+                    }
+                }
+                if(strcmp(arguments[argCount-1],"fg") == 0) //foreground command 
+                {
+                    sendToForeground(bg_process);
+                }
+                else if(strcmp(arguments[argCount-1],"exit") != 0) //Dont create a new process if exiting
+                {
+                    int pid = createNewProcess(arguments, argCount, bg_flag, rd_flag);
+                    if(bg_flag)
+                    {
+                        bg_process = pid;
+                    }
+                }
+                if(rd_flag)//set output back
+                {
+                    dup2(fd_stdout, STDOUT_FILENO);
                 }
             }
-
-            if(strcmp(arguments[argCount-1],"fg") == 0) //foreground command 
+            else//Arguments dont exist
             {
-               // argCount == 2 ? sendToForeground(atoi(arguments[0])) : sendToForeground(bg_process);     
-                sendToForeground(bg_process);
-            }
-            else if(strcmp(arguments[argCount-1],"exit") != 0) //Dont create a new process is exiting
-            {
-                int pid = createNewProcess(arguments, argCount, bg_flag, rd_flag);
-                if(bg_flag)
-                {
-                    bg_process = pid;
-                    
-                }
-            }
-
-            if(rd_flag)//set output back
-            {
-                dup2(fd_stdout, STDOUT_FILENO);
+                argCount = 1; //Avoid segfault from whileloop
             }
         }
     }
-   
-
-
     return 0;
 }
